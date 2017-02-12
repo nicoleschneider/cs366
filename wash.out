@@ -1,0 +1,135 @@
+Script started on Fri 10 Feb 2017 11:08:53 AM EST
+TEST1
+nschneid@snoopy:~/cs366/asn2$ ls -l^M
+total 56^M
+-rwx------  1 nschneid nschneid 13936 Feb 10 10:06 a.out^M
+-rw-------+ 1 nschneid nschneid     0 Feb 10 10:08 test2.txt^M
+-rw-------+ 1 nschneid nschneid   602 Feb 10 10:49 test3.txt^M
+-rwxrwxrwx  1 nschneid nschneid     0 Feb 10 10:37 test.txt^M
+-rwx------+ 1 nschneid nschneid  4063 Feb 10 09:26 wash.c^M
+-rw-------  1 nschneid nschneid     0 Feb 10 11:08 wash.out^M
+-rw-------  1 nschneid nschneid 29874 Feb 10 10:31 wash.pdf^M
+
+TEST1
+nschneid@snoopy:~/cs366/asn2$ wash test.txt test3.txt NEWNAME.txt
+File: test.txt Command: c^M
+Current file is: test.txt^M
+^M
+File: test.txt Command: q^M
+Thanks for using this program!^M
+
+
+
+
+TEST2
+nschneid@snoopy:~/cs366/asn2$ wash test.txt NEWNAME.txt
+File: test.txt Command: c^MCurrent file is: test.txt^M
+^M
+File: test.txt Command: x^M
+^M
+File: test.txt Command: q^H ^Hq^M
+Thanks for using this program!^M
+nschneid@snoopy:~/cs366/asn2$ ls -l^M
+total 56^M
+-rwx------  1 nschneid nschneid 13936 Feb 10 10:06 a.out^M
+-rw-------+ 1 nschneid nschneid     0 Feb 10 10:08 test2.txt^M
+-rw-------+ 1 nschneid nschneid   602 Feb 10 10:49 test3.txt^M-rwxrwxrwx  1 nschneid nschneid     0 Feb 10 11:08 test.tx^M
+
+-rwx------+ 1 nschneid nschneid  4063 Feb 10 09:26 wash.c^M
+-rw-------  1 nschneid nschneid     0 Feb 10 11:08 wash.out^
+-rw-------  1 nschneid nschneid 29874 Feb 10 10:31 wash.pdf^M
+
+
+
+
+
+TEST3
+nschneid@snoopy:~/cs366/asn2$ wash test.txt test2.txt^M
+^M
+File: test.txt Command: n^M
+^M
+File: test2.txt Command: a^H ^Hd^M
+Enter the name of the new file: dup.txt^M
+^M
+File: test2.txt Command: r^M
+Enter a new file name: NEWNAME.txt^M
+^M
+File: test2.txt Command: q^MThanks for using this program!^M
+nschneid@snoopy:~/cs366/asn2$ ls -l^M
+total 56^M
+-rwx------  1 nschneid nschneid 13936 Feb 10 10:06 a.out^M
+-rw-------  1 nschneid nschneid     0 Feb 10 11:13 dup.txt^M
+-rw-------+ 1 nschneid nschneid     0 Feb 10 11:13 NEWNAME.txt^M
+-rw-------+ 1 nschneid nschneid   602 Feb 10 10:49 test3.txt^M
+-rwxrwxrwx  1 nschneid nschneid     0 Feb 10 11:08 test.txt^M
+-rwx------+ 1 nschneid nschneid  4063 Feb 10 09:26 wash.c^M
+-rw-------  1 nschneid nschneid     0 Feb 10 11:08 wash.out^M
+-rw-------  1 nschneid nschneid 29874 Feb 10 10:31 wash.pdf^M
+
+
+
+
+
+TEST4
+nschneid@snoopy:~/cs366/asn2$ wash test.txt test3.txt dup.txt
+File: test.txt Command: n^M
+^M
+File: test3.txt Command: l^M
+Last 100 bytes are:^M
+oooooooooooooo^M
+rrrrrrrrrrrrrrrrrrrrrrrrrr^M
+ssssssssssssssssss^M
+rrrrrrrrrrrrrrrrrrrrr^M
+^M
+this is the end^M
+File: test3.txt Command: n^M
+^M
+File: dup.txt Command: l^M
+Last 100 bytes are:^M
+^A^M
+File: dup.txt Command: u^M^M
+File: dup.txt Command: q^M
+Thanks for using this program!^M
+nschneid@snoopy:~/cs366/asn2$ ls -l^M
+total 56^M
+-rwx------  1 nschneid nschneid 13936 Feb 10 10:06 a.out^M
+-rw-------+ 1 nschneid nschneid     0 Feb 10 11:13 NEWNAME.txt^M
+-rw-------+ 1 nschneid nschneid   602 Feb 10 10:49 test3.txt^M
+-rwxrwxrwx  1 nschneid nschneid     0 Feb 10 11:08 test.txt^M
+-rwx------+ 1 nschneid nschneid  4063 Feb 10 09:26 wash.c^M
+-rw-------  1 nschneid nschneid     0 Feb 10 11:08 wash.out^M
+
+
+
+
+
+
+TEST5
+nschneid@snoopy:~/cs366/asn2$ wash test.txt test3.txt NEWNAME.txt
+File: test.txt Command: n^M
+^M
+File: test3.txt Command: a^M
+Enter the name of the new file: test.txt^M
+^M
+File: test3.txt Command: t^M
+^M
+File: test3.txt Command: n^M
+^M
+File: NEWNAME.txt Command: m^M
+Please enter integer for mode (like 0777, 0755, etc.): 0777^M
+^M
+File: NEWNAME.txt Command: q^M
+Thanks for using this program!^M
+nschneid@snoopy:~/cs366/asn2$ ls -l^M
+total 56^M
+-rwx------  1 nschneid nschneid 13936 Feb 10 10:06 a.out^M
+-rwxrwxrwx  1 nschneid nschneid     0 Feb 10 11:13 NEWNAME.txt^M
+-rw-------+ 1 nschneid nschneid     0 Feb 10 10:49 test3.txt^M
+-rwxrwxrwx  1 nschneid nschneid   602 Feb 10 11:27 test.txt^M
+-rwx------+ 1 nschneid nschneid  4063 Feb 10 09:26 wash.c^M
+-rw-------  1 nschneid nschneid     0 Feb 10 11:08 wash.out^M
+-rw-------  1 nschneid nschneid 29874 Feb 10 10:31 wash.pdf^M
+nschneid@snoopy:~/cs366/asn2$ exit^M
+exit^M
+
+Script done on Fri 10 Feb 2017 11:39:04 AM EST
