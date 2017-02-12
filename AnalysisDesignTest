@@ -1,0 +1,92 @@
+ANALYSIS
+----------------------
+The problem is asking for a program that can manipulate many files with a bunch of 
+different commands like duplicate, rename, display last 100 bytes of, etc. A command 
+is in the form of a character that will be taken in through the command line. The file names
+will be taken in all at once when the program is run (as arguments), The user needs to 
+be able to issue multiple commands for a given file and then move on to other files when they choose.
+The program should continure to prompt the user for commands until the 'q' command is issued or
+the user move on to the next file when they are working with the last file in the list.
+
+
+DESIGN
+-----------------------
+To solve this problem, I will take the file names from argv and move them into a two dimenstional character array
+that can then be looped through, going to the next file whenever the 'n' command is given. Within that loop,
+while working with a given file, a command character will be scanned in from the user and a series of if-else 
+statements will be used to determine which function should be called (corresponding to the command). For instance,
+if the character scanned in is a 'r', the rename function would be called. After this function is completed
+(the function may prompt the user for more information like a name for the file to be changed to or the code corresponding
+to the desired file permissions, depending on which function it is), a new character will be scanned in from the user and evaluated.
+This process will continue until the loop reaches the end of the array of file names or the user types the 'q' character 
+command. Within each function, the file will be opened using fopen() only if the function requires information from 
+within the file. This means that files like setTime() and changePermissions() do not require opening the file.
+
+
+
+TEST PLAN
+----------------------
+Test1:
+IN: test.txt
+'c'
+'q
+
+OUT: the name test.txt should be displayed to the console
+RATIONALE: Check that one command can be applied to one fil
+
+Test2: Onefile, multiple commands that do not require manipulating what is inside the file
+
+IN: test.tx
+'c'
+'x'
+'q'
+OUT:
+Current file is: test.txt
+(ls -l should show new time stamp)
+RATIONALE:
+Testing that one file can be used by the program to do simple commands. We need to make sure this works first, before attempting to manipulate multiple files.
+
+Test3: Two files with multiple commands
+IN: test.txt test2.txt
+'n'
+'d'
+dup.txt
+'r'
+NEWNAME.txt
+'q'
+OUT:
+(ls -l) should show that NEWNAME.txt has replaced test2.txt and dup.txt should appear with the same contents as test2.txt
+RATIONALE: This tests that the program can work with multiple files and will run more than one command on those files, continuing to prompt the user for commands until 'q' is typed in
+
+Test4: Testing the commands that require working with the actual contents of the files
+IN: test.txt test3.txt dup.txt
+'n'
+'l'
+'n'
+'u'
+'q'
+OUT:
+Last 100 bytes are:
+oooooooooooooo
+rrrrrrrrrrrrrrrrrrrrrrrrrr
+ssssssssssssssssss
+rrrrrrrrrrrrrrrrrrrrr
+
+Last 100 bytes are:
+
+(ls -l) should show the dup.txt has been deleted
+RATIONALE: This tests more of the commands and requres that the program actually output to the console text from within the files
+
+Test5:
+IN: test.txt. test3.txt NEWNAME.txt
+'n'
+'a'
+test.txt
+'t'
+'n'
+'m'
+0777
+'q'
+OUT:
+(ls -l) should reflect that the permissions of NEWNAME.txt have been changed to read write execute for everyone and test.txt should now contain the text that was in test3.txt and test3.txt should now have a size of zero.
+RATIONALE: This checks the rest of the commands.
